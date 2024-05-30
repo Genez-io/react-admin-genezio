@@ -21,7 +21,7 @@ If your app uses authentication:
 
 1. Run `npm i @genezio/auth` in your client folder
 2. Copy the client/src/auth/ contents to your project and add the auth routes as exemplified in the App.tsx file in this repo
-3. copy the [authProvider.ts](https://github.com/bogdanripa/react-admin-genezio/blob/main/example/client/src/authProvider.ts) file to your React Admin project
+3. Copy the [authProvider.ts](https://github.com/bogdanripa/react-admin-genezio/blob/main/example/client/src/authProvider.ts) file to your React Admin project
 4. Update the token / region in the above file with the ones provided by Genezio
 5. Make sure you update the reset password URL (in the Genezio Project Admin UI) to https://YOUR-DOMAIN/reset-password
 
