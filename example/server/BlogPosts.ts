@@ -1,5 +1,5 @@
 import { GenezioDeploy, GenezioAuth, GnzContext } from "@genezio/types";
-import {IDataProviderService, DataProviderListParams, DataProviderResponse} from "./data-provider";
+import {IDataProviderService, DataProviderListParams, DataProviderResponse} from "./DataProvider";
 
 import data from "./data.json";
 
@@ -12,22 +12,22 @@ type BlogPost = {
   id?: number;
   title: string;
   content: string;
-  category_id: number;
+  categoryId: number;
   status: string;
   createdAt: string;
 }
 
-let bd: BlogPost[] = data.blog_posts;
+let bd: BlogPost[] = data.blogPosts;
 let cd: Category[] = data.categories;
 
 @GenezioDeploy()
-export class blog_posts implements IDataProviderService<BlogPost>{
+export class BlogPosts implements IDataProviderService<BlogPost>{
   constructor() {}
 
   async getList(context: GnzContext, {pagination, sort, filter} : DataProviderListParams) {
     let r:DataProviderResponse<any> = {data: [] as Record<string, any>, total: 0};
     bd.forEach((item:any) => {
-      const cat = cd.find((c) => c.id == item.category_id);
+      const cat = cd.find((c) => c.id == item.categoryId);
       if (cat) {
           item.category = cat;
       }

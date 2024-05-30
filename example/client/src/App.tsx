@@ -23,14 +23,14 @@ export const App = () => (
     dashboard={Dashboard}
   >
     <Resource
-      name="blog_posts"
+      name="BlogPosts"
       list={BlogPostList}
       edit={BlogPostEdit}
       show={ShowGuesser}
       create={BlogPostCreate}
     />
     <Resource
-      name="categories"
+      name="Categories"
       list={CategoryList}
       edit={EditGuesser}
       show={ShowGuesser}

@@ -1,5 +1,5 @@
 import { GenezioDeploy, GenezioAuth, GnzContext } from "@genezio/types";
-import {IDataProviderService, DataProviderListParams} from "./data-provider";
+import {IDataProviderService, DataProviderListParams} from "./DataProvider";
 import data from "./data.json";
 
 type Category = {
@@ -11,16 +11,16 @@ type BlogPost = {
   id?: number;
   title: string;
   content: string;
-  category_id: number;
+  categoryId: number;
   status: string;
   createdAt: string;
 }
 
-let bd: BlogPost[] = data.blog_posts;
+let bd: BlogPost[] = data.blogPosts;
 let cd: Category[] = data.categories;
 
 @GenezioDeploy()
-export class categories implements IDataProviderService<Category>{
+export class Categories implements IDataProviderService<Category>{
   constructor() {}
 
   async getList(_context: GnzContext, {pagination, sort, filter} : DataProviderListParams) {
@@ -98,7 +98,7 @@ export class categories implements IDataProviderService<Category>{
     const index = cd.findIndex((item) => item.id == id);
     if (index === -1) throw new Error("Not found");
 
-    const blogIndex = bd.findIndex((item) => item.category_id == id);
+    const blogIndex = bd.findIndex((item) => item.categoryId == id);
     if (blogIndex !== -1) throw new Error("Category is in use");
 
     const deletedItem = cd[index];
@@ -115,7 +115,7 @@ export class categories implements IDataProviderService<Category>{
     ids.forEach((id) => {
       const index = cd.findIndex((item) => item.id == id);
       if (index !== -1) {
-        const blogIndex = bd.findIndex((item) => item.category_id == id);
+        const blogIndex = bd.findIndex((item) => item.categoryId == id);
         if (blogIndex === -1) { // Only delete if no blog post uses this category
           cd.splice(index, 1);
           deletedIds.push(id);

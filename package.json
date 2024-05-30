@@ -1,6 +1,6 @@
 {
   "name": "ra-data-genezio",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "DataProvider for react-admin and genezio SDKs.",
   "main": "dist/ra-data-genezio.js",
   "types": "dist/ra-data-genezio.d.ts",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bogdanripa/react-admin-genezio/tree/main/ra-data-genezio"
+    "url": "git+https://github.com/bogdanripa/react-admin-genezio.git#main"
   },
   "author": "Bogdan Ripa",
   "license": "MIT",

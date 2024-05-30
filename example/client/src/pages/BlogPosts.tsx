@@ -18,7 +18,7 @@ export const BlogPostList = (props: any) => (
 <List disableAuthentication {...props}>
     <Datagrid rowClick="edit">
     <TextField source="title" />
-    <ReferenceField source="category.id" reference="categories">
+    <ReferenceField source="categoryId" reference="Categories">
         <TextField source="title" />
     </ReferenceField>
     <TextField source="status" />
@@ -31,7 +31,7 @@ export const BlogPostCreate = (props: any) => (
     <Create {...props}>
       <SimpleForm>
         <TextInput source="title" validate={[required()]}/>
-        <ReferenceInput source="category_id" reference="categories">
+        <ReferenceInput source="categoryId" reference="Categories">
           <SelectInput optionText="title" validate={[required()]}/>
         </ReferenceInput>
         <TextInput source="content"  validate={[required()]}/>
@@ -50,7 +50,7 @@ export const BlogPostCreate = (props: any) => (
     <Edit {...props}>
       <SimpleForm>
         <TextInput source="title"  validate={[required()]}/>
-        <ReferenceInput source="category_id" reference="categories">
+        <ReferenceInput source="categoryId" reference="Categories">
           <SelectInput optionText="title"  validate={[required()]} />
         </ReferenceInput>
         <TextInput source="content"  validate={[required()]}/>

@@ -1,6 +1,7 @@
 import { Identifier, DataProvider } from "react-admin";
 
 let cache:any={};
+let shouldUseCache:boolean = false;
 
 const simpleHashCode = (s: string):number => {
     let hash:number = 0;
@@ -14,18 +15,20 @@ const simpleHashCode = (s: string):number => {
 const request = async(gsdk: any, fName: string, resource: string, params: any) => {
     const paramsHash:number = simpleHashCode(JSON.stringify(params));
 
-    if (fName.startsWith("get")) {
-        if (cache[resource] === undefined) {
-            cache[resource] = {};
+    if (shouldUseCache) {
+        if (fName.startsWith("get")) {
+            if (cache[resource] === undefined) {
+                cache[resource] = {};
+            }
+            if (cache[resource][fName] === undefined) {
+                cache[resource][fName] = {};
+            }
+            if (cache[resource][fName][paramsHash] !== undefined) {
+                return cache[resource][fName][paramsHash];
+            }
+        } else {
+            delete cache[resource];
         }
-        if (cache[resource][fName] === undefined) {
-            cache[resource][fName] = {};
-        }
-        if (cache[resource][fName][paramsHash] !== undefined) {
-            return cache[resource][fName][paramsHash];
-        }
-    } else {
-        delete cache[resource];
     }
 
     const gclass = gsdk[resource as keyof typeof gsdk] ?? undefined;
@@ -34,7 +37,7 @@ const request = async(gsdk: any, fName: string, resource: string, params: any) =
 
         if (gfunction) {
             const ret = await gfunction(params);
-            if (fName.startsWith("get")) {
+            if (shouldUseCache && fName.startsWith("get")) {
                 cache[resource][fName][paramsHash] = ret;
             }
             return ret;
@@ -143,7 +146,8 @@ interface UpdateManyResult {
 }
 
 
-export default (gsdk: any) => {
+export default (gsdk: any, useCache:boolean = false) => {
+    shouldUseCache = useCache;
     const dataProvider: DataProvider = {
         getList: async(resource: string, params: GetListParams)/*: Promise<GetListResult>*/ => {
             return request(gsdk, "getList", resource, params);
