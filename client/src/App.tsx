@@ -15,35 +15,35 @@ import dataProvider from "ra-data-genezio";
 import * as gsdk from "@genezio-sdk/react-admin";
 
 export const App = () => (
-  <BrowserRouter>
-    <Admin 
-      authProvider={authProvider} 
-      dataProvider={dataProvider(gsdk)}
-      loginPage={Login}
-      dashboard={Dashboard}
-    >
-      <Resource
-        name="blog_posts"
-        list={BlogPostList}
-        edit={BlogPostEdit}
-        show={ShowGuesser}
-        create={BlogPostCreate}
-      />
-      <Resource
-        name="categories"
-        list={CategoryList}
-        edit={EditGuesser}
-        show={ShowGuesser}
-        create={CategoryCreate}
-      />
-      <CustomRoutes>
-          <Route path="/" element={<Dashboard />} />
-      </CustomRoutes>
-      <CustomRoutes noLayout>
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-      </CustomRoutes>
-    </Admin>
-    </BrowserRouter>
+<BrowserRouter>
+  <Admin 
+    authProvider={authProvider} 
+    dataProvider={dataProvider(gsdk)}
+    loginPage={Login}
+    dashboard={Dashboard}
+  >
+    <Resource
+      name="blog_posts"
+      list={BlogPostList}
+      edit={BlogPostEdit}
+      show={ShowGuesser}
+      create={BlogPostCreate}
+    />
+    <Resource
+      name="categories"
+      list={CategoryList}
+      edit={EditGuesser}
+      show={ShowGuesser}
+      create={CategoryCreate}
+    />
+    <CustomRoutes>
+        <Route path="/" element={<Dashboard />} />
+    </CustomRoutes>
+    <CustomRoutes noLayout>
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+    </CustomRoutes>
+  </Admin>
+  </BrowserRouter>
 );

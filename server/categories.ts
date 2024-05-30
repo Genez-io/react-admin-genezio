@@ -74,14 +74,14 @@ export class categories implements IDataProviderService<Category>{
     return { data, total: data.length };
   }
   
-//@GenezioAuth()
-async create(context: GnzContext, c: Category) {
-  console.log("User: ", context.user?.email, " created a category");
-  const maxId = cd.length > 0 ? Math.max(...cd.map(item => item.id!)) : 0;
-  c.id = maxId + 1;
-  cd.push(c);
-  return {data: cd.find((item) => item.id == c.id)};
-}
+  //@GenezioAuth()
+  async create(context: GnzContext, c: Category) {
+    console.log("User: ", context.user?.email, " created a category");
+    const maxId = cd.length > 0 ? Math.max(...cd.map(item => item.id!)) : 0;
+    c.id = maxId + 1;
+    cd.push(c);
+    return {data: cd.find((item) => item.id == c.id)};
+  }
 
   //@GenezioAuth()
   async update(context: GnzContext, c: Category) {
