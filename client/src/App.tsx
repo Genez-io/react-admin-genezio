@@ -1,49 +1,49 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { BackendService } from "@genezio-sdk/react-admin";
-import "./App.css";
+import { Admin, Resource, ListGuesser, EditGuesser, ShowGuesser, CustomRoutes } from "react-admin";
+import { BrowserRouter, Route } from "react-router-dom";
 
-export default function App() {
-  const [name, setName] = useState("");
-  const [response, setResponse] = useState("");
+import { Dashboard } from './pages/Dashboard';
+import { BlogPostList, BlogPostCreate, BlogPostEdit } from './pages/BlogPosts';
+import { CategoryList, CategoryCreate } from './pages/Categories';
 
-  async function sayHello() {
-    setResponse(await BackendService.hello(name));
-  }
+import { Login } from './auth/Login';
+import { Register } from './auth/Register';
+import { ForgotPassword } from './auth/ForgotPassword';
+import { ResetPassword } from './auth/ResetPassword';
 
-  return (
-    <>
-      <div>
-        <a href="https://genezio.com" target="_blank">
-          <img
-            src="https://raw.githubusercontent.com/Genez-io/graphics/main/svg/Logo_Genezio_White.svg"
-            className="logo genezio light"
-            alt="Genezio Logo"
-          />
-          <img
-            src="https://raw.githubusercontent.com/Genez-io/graphics/main/svg/Logo_Genezio_Black.svg"
-            className="logo genezio dark"
-            alt="Genezio Logo"
-          />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Genezio + React = ❤️</h1>
-      <div className="card">
-        <input
-          type="text"
-          className="input-box"
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter your name"
-        />
-        <br />
-        <br />
+import { authProvider } from "./authProvider";
+import dataProvider from "./react-admin-genezio";
+import * as gsdk from "@genezio-sdk/react-admin";
 
-        <button onClick={() => sayHello()}>Say Hello</button>
-        <p className="read-the-docs">{response}</p>
-      </div>
-    </>
-  );
-}
+export const App = () => (
+  <BrowserRouter>
+    <Admin 
+      authProvider={authProvider} 
+      dataProvider={dataProvider(gsdk)}
+      loginPage={Login}
+      dashboard={Dashboard}
+    >
+      <Resource
+        name="blog_posts"
+        list={BlogPostList}
+        edit={BlogPostEdit}
+        show={ShowGuesser}
+        create={BlogPostCreate}
+      />
+      <Resource
+        name="categories"
+        list={CategoryList}
+        edit={EditGuesser}
+        show={ShowGuesser}
+        create={CategoryCreate}
+      />
+      <CustomRoutes>
+          <Route path="/" element={<Dashboard />} />
+      </CustomRoutes>
+      <CustomRoutes noLayout>
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+      </CustomRoutes>
+    </Admin>
+    </BrowserRouter>
+);
