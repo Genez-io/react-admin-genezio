@@ -11,7 +11,7 @@ import { ForgotPassword } from './auth/ForgotPassword';
 import { ResetPassword } from './auth/ResetPassword';
 
 import { authProvider } from "./authProvider";
-import dataProvider from "./react-admin-genezio";
+import dataProvider from "ra-data-genezio";
 import * as gsdk from "@genezio-sdk/react-admin";
 
 export const App = () => (
