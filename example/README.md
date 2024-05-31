@@ -7,14 +7,15 @@ You can play with it here: https://lime-recent-tuna.app.genez.io/
 # Deploying this example
 
 1. Clone this repository locally
-2. Install genezio with `npm install -g genezio`
-3. Deploy the project with `genezio deploy`
-4. Go to the Genezio App in your broser by accessing https://app.genez.io/ and choose your project
-5. Enable Authentication by choosing "Authentication" on the left-side menu, and enable the Email provider
-6. Make sure you update the reset password URL from Authentication / Settings / Email Templates / Reset Password to `https://ABC-DEF-GHI.app.genez.io/reset-password` (you'll find your domain name under the Domains section)
-7. Update the auth token / region in the `client/src/authProvider.ts` file with the ones provided by Genezio - you can find them in the above Authentication section
-8. Redeploy the genezio project by running `genezio deploy` again
-9. Go to `https://ABC-DEF-GHI.app.genez.io/` again and test the project in your browser
+2. `cd example`
+3. Install genezio with `npm install -g genezio`
+4. Deploy the project with `genezio deploy`
+5. Go to the Genezio App in your broser by accessing https://app.genez.io/ and choose your project
+6. Enable Authentication by choosing "Authentication" on the left-side menu, and enable the Email provider
+7. Make sure you update the reset password URL from Authentication / Settings / Email Templates / Reset Password to `https://ABC-DEF-GHI.app.genez.io/reset-password` (you'll find your domain name under the Domains section)
+8. Update the auth token / region in the `client/src/authProvider.ts` file with the ones provided by Genezio - you can find them in the above Authentication section
+9. Redeploy the genezio project by running `genezio deploy` again
+10. Go to `https://ABC-DEF-GHI.app.genez.io/` again and test the project in your browser
 
 # Using react admin on a new genezio project
 
