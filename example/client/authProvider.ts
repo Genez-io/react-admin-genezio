@@ -1,6 +1,6 @@
 import { AuthProvider, UserIdentity } from 'react-admin';
 import { AuthService } from "@genezio/auth";
-AuthService.getInstance().setTokenAndRegion("1-a89649c4-b810-4990-b40f-ba73eef3d4a5", "eu-central-1");
+AuthService.getInstance().setTokenAndRegion("YOUR-AUTH-TOKEN", "eu-central-1");
 
 export const authProvider: AuthProvider = {
 
