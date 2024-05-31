@@ -11,4 +11,4 @@ See a the code behind and step by step instructions on hopw to deploy this data 
 
 And a working demo of this implementation: https://lime-recent-tuna.app.genez.io/
 
-This is a serverless backend implementation using genezio classes and functions (Faas or Functions as a Service)
+This is a serverless backend implementation using genezio classes and functions (FaaS or Functions as a Service)
