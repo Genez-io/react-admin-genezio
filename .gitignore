@@ -1,3 +1,5 @@
 
 /node_modules
 /dist
+/ra-data-genezio/node_modules
+/ra-data-genezio/dist
