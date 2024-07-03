@@ -4,7 +4,7 @@ import React, { useState, CSSProperties } from 'react';
 import { useNotify, Notification } from 'react-admin';
 import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { sharedStyles as styles } from './styles';
+import { sharedStyles as styles } from './Styles';
 
 export const Register = () => {
     const [email, setEmail] = useState('');
