@@ -2,7 +2,7 @@ import { AuthService } from "@genezio/auth";
 import React, { useState } from 'react';
 import { useNotify, Notification } from 'react-admin';
 import { Link, useNavigate } from 'react-router-dom';
-import { sharedStyles as styles } from './Styles';
+import { sharedStyles as styles } from './styles';
 
 export const ForgotPassword = () => {
     const [email, setEmail] = useState('');
