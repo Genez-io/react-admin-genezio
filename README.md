@@ -9,6 +9,6 @@ Using this data provider, each react resource is mapped to a Genezio class. The 
 
 See a the code behind and step by step instructions on hopw to deploy this data provider in the [example](https://github.com/Genez-io/react-admin-genezio/tree/main/example) folder.
 
-And a working demo of this implementation: https://lime-recent-tuna.app.genez.io/
+And a working demo of this implementation: https://amethyst-vulnerable-pheasant.app.genez.io/
 
 This is a serverless backend implementation using genezio classes and functions (FaaS or Functions as a Service)
