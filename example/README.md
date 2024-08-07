@@ -2,7 +2,7 @@
 
 This exemplifies a web admin interface that uses react-admin as a front-end and Genezio in the backend. It exposes some genezio classes as well as Genezio-based authentication.
 
-You can play with it here: https://lime-recent-tuna.app.genez.io/
+You can play with it here: https://amethyst-vulnerable-pheasant.app.genez.io/
 
 # Deploying this example
 
